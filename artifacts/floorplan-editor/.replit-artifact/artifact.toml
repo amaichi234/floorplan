@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "間取りエディター"
+description = "リフォームを相談する2人向けの、スマートフォンとPCで使える2D間取り編集アプリ。SVG上で部屋や壁、扉を表示し、mm単位で編集してJSONとして保存・共有できます。"
+version = "1.0.0"
+id = "artifacts/floorplan-editor"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22580
+
+[services.development]
+run = "pnpm --filter @workspace/floorplan-editor run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/floorplan-editor", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/floorplan-editor/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22580"
+BASE_PATH = "/"

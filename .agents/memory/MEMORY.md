@@ -1,0 +1,1 @@
+- [Shared renovation planning](renovation-collaboration.md) — Two people plan the home renovation; the long-term direction is for AI and people to edit the same floor-plan data.
