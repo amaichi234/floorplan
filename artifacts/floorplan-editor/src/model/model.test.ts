@@ -92,10 +92,7 @@ test('undo restores the complete prior graph snapshot', () => {
 
 test('a legacy plan with a broken wall loop shows both proposals and keeps the source untouched', () => {
   const legacy = structuredClone(sampleLegacyPlan);
-  const northWall = legacy.walls.find((wall) => wall.id === 'wall-north');
-  assert.ok(northWall);
-  northWall.y1 = 150;
-  northWall.y2 = 150;
+  legacy.walls.splice(legacy.walls.findIndex((wall) => wall.id === 'wall-north'), 1);
   const before = structuredClone(legacy);
   const preview = createMigrationPreview(legacy, JSON.stringify(legacy));
   const roomsCandidate = preview.candidates.find((candidate) => candidate.id === 'rooms');

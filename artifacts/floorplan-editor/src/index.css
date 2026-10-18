@@ -132,6 +132,31 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, svg:focus-vis
 .help-mark { display:grid; place-items:center; flex:0 0 19px; width:19px; height:19px; border-radius:50%; background:#e7e9de; color:#557466; font:700 11px var(--app-font-mono); }
 .mobile-panel-toggle { display:none; }
 .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.migration-overlay { position:fixed; inset:0; z-index:1000; display:grid; place-items:center; padding:22px; background:#1e2c29a8; }
+.migration-dialog { width:min(100%,980px); max-height:min(92dvh,900px); display:flex; flex-direction:column; overflow:hidden; padding:22px; border:1px solid #ded9cc; border-radius:18px; background:#faf8f2; box-shadow:0 22px 80px #101b1866; }
+.migration-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
+.migration-header h2 { margin:5px 0 4px; font:700 21px/1.2 var(--app-font-serif); }
+.migration-header p,.migration-source-note { margin:0; color:#777d76; font-size:12px; line-height:1.6; }
+.migration-source-note { margin-top:13px; padding:10px 12px; border-radius:10px; background:#eef0e8; }
+.migration-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:14px 0; overflow-y:auto; min-height:0; padding:1px 3px 2px 1px; }
+.migration-option { min-width:0; display:flex; flex-direction:column; align-items:stretch; padding:14px; border:1px solid #ded9cc; border-radius:13px; background:#f7f5ef; color:#334943; text-align:left; white-space:normal; }
+.migration-option:hover { border-color:#a8bdb1; background:#f3f3eb; }
+.migration-option.active { border-color:#4f806f; box-shadow:0 0 0 2px #386f601c; background:#f1f4ee; }
+.migration-option.invalid { border-color:#dfb9ab; }
+.migration-option-head { display:flex; align-items:center; gap:9px; }
+.migration-radio { width:17px; height:17px; flex:0 0 17px; display:grid; place-items:center; border:1px solid #8b998f; border-radius:50%; }
+.migration-radio i { width:8px; height:8px; border-radius:50%; background:#386f60; }
+.migration-option-title { font:700 14px var(--app-font-serif); }
+.migration-valid { display:inline-flex; align-items:center; gap:3px; margin-left:auto; color:#497660; font-size:10px; white-space:nowrap; }
+.migration-option p { margin:9px 0 5px 26px; color:#767d74; font-size:11px; line-height:1.55; }
+.migration-stats { margin:0 0 5px 26px; color:#607267; font:10px var(--app-font-mono); }
+.migration-preview { width:100%; aspect-ratio:2.15; margin:8px 0 4px; border-radius:9px; background-color:#f3f0e8; }
+.migration-no-preview { min-height:96px; display:flex; align-items:center; justify-content:center; gap:8px; margin:8px 0 4px; border:1px dashed #d8b2a6; border-radius:9px; color:#9a5546; font-size:11px; text-align:center; }
+.migration-warning,.migration-error { margin:5px 0 0 26px; font-size:10px; line-height:1.45; }
+.migration-warning { color:#7a704f; }
+.migration-error { color:#a34e40; }
+.migration-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:12px; border-top:1px solid #e7e1d6; color:#777d76; font-size:11px; }
+.migration-footer > div { display:flex; justify-content:flex-end; gap:8px; }
 @media (max-width: 900px) {
  .editor-grid { grid-template-columns:minmax(0,1fr) 300px; gap:12px; }
  .app-shell { padding-inline:20px; }
@@ -169,6 +194,15 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, svg:focus-vis
  .inspector-content.collapsed { display:none; }
  .room-title { font-size:400px; }
  .room-meta { font-size:260px; }
+  .migration-overlay { padding:8px; align-items:end; }
+  .migration-dialog { width:100%; max-height:96dvh; padding:16px 13px calc(12px + env(safe-area-inset-bottom)); border-radius:17px 17px 10px 10px; }
+  .migration-header h2 { font-size:18px; }
+  .migration-options { grid-template-columns:1fr; gap:9px; }
+  .migration-option { padding:12px; }
+  .migration-preview { aspect-ratio:2.45; }
+  .migration-footer { align-items:flex-start; flex-direction:column; }
+  .migration-footer > div { width:100%; }
+  .migration-footer .button { flex:1; }
 }
 @media (prefers-reduced-motion: reduce) {
  *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; }
